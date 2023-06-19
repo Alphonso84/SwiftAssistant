@@ -11,8 +11,9 @@ import SwiftUI
 struct SidebarView: View {
     @Binding var selectedTheme: HighlightrTheme
     @Binding var analysisLength: ResponseLength
-    @Binding var questionType: QuestionType
     @Binding var selectedTab: Tab
+    @ObservedObject var viewModel: ContentEditorView_ViewModel
+
 
     var body: some View {
         List {
@@ -48,7 +49,7 @@ struct SidebarView: View {
                 SideBarSeparator()
                 Spacer()
                 
-                Picker("Question Type", selection: $questionType) {
+                Picker("Question Type", selection: $viewModel.questionType) {
                     ForEach(QuestionType.allCases) { question in
                         Text(question.rawValue).tag(question)
                     }
@@ -68,7 +69,7 @@ struct SidebarView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
-                if questionType == .Question {
+                if viewModel.questionType == .Question {
                     SideBarSeparator()
                     Spacer()
                     VStack {

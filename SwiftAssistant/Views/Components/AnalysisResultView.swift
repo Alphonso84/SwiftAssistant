@@ -8,7 +8,7 @@
 import SwiftUI
 // AnalysisResultView Component
 struct AnalysisResultView: View {
-    @ObservedObject var viewModel: ContentEditorView_ViewModel
+    @ObservedObject var viewModel = ContentEditorView_ViewModel()
     @Binding var selectedTheme: HighlightrTheme
     @Binding var questionType: QuestionType
 

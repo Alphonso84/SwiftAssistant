@@ -14,7 +14,7 @@ class ContentEditorView_ViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var showCheckmark = false
     @Published var showingModal = false
-    @Published var questionType: QuestionType = .Code
+    @Published var questionType: QuestionType = .Question
     @Published var selectedResponseLength: ResponseLength = .Short
     @Published var syntaxStyle: HighlightrTheme = .githubGist
     @Published var requestError: RequestError?
@@ -24,7 +24,7 @@ class ContentEditorView_ViewModel: ObservableObject {
     func analyzeWriting() {
         self.isLoading = true
         let prompt = createPrompt()
-        
+
         networkService.sendRequest(with: prompt) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
@@ -47,7 +47,9 @@ class ContentEditorView_ViewModel: ObservableObject {
     private func createPrompt() -> String {
         let codePrompt = "Can you analyze the following Swift code? Give a \(selectedResponseLength.rawValue) length explanation of what the code does. Then give a refactored improved code example and explain how it improved the code from the previous version. Here is the Swift code: \(writing)"
         let questionPrompt = "Answer the following iOS or Swift related problem or question to the best of your ability. Add a short example in Swift code. Here is the question: \(writing)"
-        return questionType == .Code ? codePrompt : questionPrompt
+        let prompt = questionType == .Code ? codePrompt : questionPrompt
+        print(prompt)
+        return prompt
     }
     
     func copyToClipboard() {

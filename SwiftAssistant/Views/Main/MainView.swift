@@ -11,24 +11,25 @@ import SwiftUI
 // Main View
 struct MainView: View {
     @ObservedObject var viewModel = ContentEditorView_ViewModel()
-    @State private var selectedTheme = HighlightrTheme.dracula
+    @State private var selectedTheme = HighlightrTheme.androidstudio
     @State private var analysisLength = ResponseLength.Short
-    @State private var questionType = QuestionType.Code
     @State private var selectedTab: Tab = .settings
     
     var body: some View {
         NavigationView {
-            SidebarView(selectedTheme: $selectedTheme, analysisLength: $analysisLength, questionType: $questionType, selectedTab: $selectedTab)
+            SidebarView(selectedTheme: $selectedTheme, analysisLength: $analysisLength, selectedTab: $selectedTab, viewModel: viewModel)
+                .onChange(of: viewModel.questionType) { newQuestionType in
+                    viewModel.questionType = newQuestionType
+                    print(viewModel.questionType)
+                }
             VStack {
                 HStack {
-                    CodeEditorView(viewModel: viewModel, questionType: $questionType)
-                    AnalysisResultView(viewModel: viewModel, selectedTheme: $selectedTheme, questionType: $questionType)
+                    CodeEditorView(viewModel: viewModel, questionType: $viewModel.questionType)
+                    AnalysisResultView(viewModel: viewModel, selectedTheme: $selectedTheme, questionType: $viewModel.questionType)
                 }
                 
                 .onAppear(perform: viewModel.checkFirstLaunch)
-                .onChange(of: questionType) { newQuestionType in
-                    viewModel.questionType = newQuestionType
-                }
+                
                 .sheet(isPresented: $viewModel.showingModal) {
                     ModalView(showingModal: $viewModel.showingModal)
                 }

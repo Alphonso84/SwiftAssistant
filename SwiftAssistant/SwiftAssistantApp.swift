@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct SwiftAssistantApp: App {
+    @StateObject private var viewModel = ContentEditorView_ViewModel()
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView().environmentObject(viewModel)
         }
     }
 }
