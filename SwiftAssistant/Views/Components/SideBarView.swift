@@ -45,12 +45,7 @@ struct SidebarView: View {
                         }
                     }
                 }
-                
-                Rectangle()
-                    .fill(Color.gray)
-                    .frame(height: 1)
-                    .edgesIgnoringSafeArea(.horizontal)
-                
+                SideBarSeparator()
                 Spacer()
                 
                 Picker("Question Type", selection: $questionType) {
@@ -73,6 +68,40 @@ struct SidebarView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
+                if questionType == .Question {
+                    SideBarSeparator()
+                    Spacer()
+                    VStack {
+                        Button(action: {
+                            // selectedTab = .settings
+                        }) {
+                            HStack {
+                                Image(systemName: "books.vertical")
+                                Text("iOS Interview Question")
+                            }
+                        }
+                        
+                        Button(action: {
+                            // selectedTab = .analytics
+                        }) {
+                            HStack {
+                                Image(systemName: "books.vertical")
+                                Text("Swift Basics")
+                            }
+                        }
+                        
+                        Button(action: {
+                            // selectedTab = .about
+                        }) {
+                            HStack {
+                                Image(systemName: "books.vertical")
+                                Text("Swift Intermediate")
+                            }
+                        }
+                    }
+                    
+                }
+                
             }
         }
         .listStyle(SidebarListStyle())

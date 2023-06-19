@@ -7,18 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		891ED7992A3E6D0100449799 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = 891ED7982A3E6D0100449799 /* Down */; };
+		891ED79C2A3EAC4A00449799 /* Highlightr in Frameworks */ = {isa = PBXBuildFile; productRef = 891ED79B2A3EAC4A00449799 /* Highlightr */; };
+		891ED79E2A3FE6D800449799 /* AnalysisResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ED79D2A3FE6D800449799 /* AnalysisResultView.swift */; };
+		891ED7A02A3FE78400449799 /* CodeEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ED79F2A3FE78400449799 /* CodeEditorView.swift */; };
+		891ED7A22A3FE7B500449799 /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ED7A12A3FE7B500449799 /* SideBarView.swift */; };
+		891ED7AA2A3FF9A200449799 /* SideBarSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ED7A92A3FF9A200449799 /* SideBarSeparator.swift */; };
+		891ED7AC2A40E37C00449799 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891ED7AB2A40E37B00449799 /* Service.swift */; };
 		899822292A3E485900547879 /* SwiftAssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899822282A3E485900547879 /* SwiftAssistantApp.swift */; };
-		8998222B2A3E485900547879 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8998222A2A3E485900547879 /* ContentView.swift */; };
+		8998222B2A3E485900547879 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8998222A2A3E485900547879 /* MainView.swift */; };
 		8998222D2A3E485A00547879 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8998222C2A3E485A00547879 /* Assets.xcassets */; };
 		899822302A3E485A00547879 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8998222F2A3E485A00547879 /* Preview Assets.xcassets */; };
+		899822372A3E498400547879 /* ContentEditorView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899822362A3E498400547879 /* ContentEditorView_ViewModel.swift */; };
+		899822392A3E4A6100547879 /* PromptModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899822382A3E4A6100547879 /* PromptModels.swift */; };
+		8998223D2A3E4C0A00547879 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8998223C2A3E4C0A00547879 /* ModalView.swift */; };
+		8998223F2A3E4CC900547879 /* TypingVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8998223E2A3E4CC900547879 /* TypingVIew.swift */; };
+		899822412A3E4D5F00547879 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899822402A3E4D5F00547879 /* Model.swift */; };
+		899822432A3E4DCD00547879 /* CustomTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899822422A3E4DCD00547879 /* CustomTextEditorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		891ED79D2A3FE6D800449799 /* AnalysisResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisResultView.swift; sourceTree = "<group>"; };
+		891ED79F2A3FE78400449799 /* CodeEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditorView.swift; sourceTree = "<group>"; };
+		891ED7A12A3FE7B500449799 /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
+		891ED7A92A3FF9A200449799 /* SideBarSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarSeparator.swift; sourceTree = "<group>"; };
+		891ED7AB2A40E37B00449799 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		899822252A3E485900547879 /* SwiftAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899822282A3E485900547879 /* SwiftAssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAssistantApp.swift; sourceTree = "<group>"; };
-		8998222A2A3E485900547879 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8998222A2A3E485900547879 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8998222C2A3E485A00547879 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8998222F2A3E485A00547879 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		899822362A3E498400547879 /* ContentEditorView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentEditorView_ViewModel.swift; sourceTree = "<group>"; };
+		899822382A3E4A6100547879 /* PromptModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptModels.swift; sourceTree = "<group>"; };
+		8998223C2A3E4C0A00547879 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		8998223E2A3E4CC900547879 /* TypingVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingVIew.swift; sourceTree = "<group>"; };
+		899822402A3E4D5F00547879 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		899822422A3E4DCD00547879 /* CustomTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,12 +50,77 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				891ED79C2A3EAC4A00449799 /* Highlightr in Frameworks */,
+				891ED7992A3E6D0100449799 /* Down in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		891ED7A32A3FE7FC00449799 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				891ED7A52A3FE82B00449799 /* Components */,
+				891ED7A42A3FE81C00449799 /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		891ED7A42A3FE81C00449799 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8998222A2A3E485900547879 /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		891ED7A52A3FE82B00449799 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8998223C2A3E4C0A00547879 /* ModalView.swift */,
+				891ED7A12A3FE7B500449799 /* SideBarView.swift */,
+				891ED7A92A3FF9A200449799 /* SideBarSeparator.swift */,
+				891ED79D2A3FE6D800449799 /* AnalysisResultView.swift */,
+				891ED79F2A3FE78400449799 /* CodeEditorView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		891ED7A62A3FE9AE00449799 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				899822402A3E4D5F00547879 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		891ED7A72A3FEA8400449799 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				899822362A3E498400547879 /* ContentEditorView_ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		891ED7A82A3FEAD300449799 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				899822422A3E4DCD00547879 /* CustomTextEditorView.swift */,
+				899822382A3E4A6100547879 /* PromptModels.swift */,
+				8998223E2A3E4CC900547879 /* TypingVIew.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		891ED7AD2A40EB3100449799 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				891ED7AB2A40E37B00449799 /* Service.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		8998221C2A3E485900547879 = {
 			isa = PBXGroup;
 			children = (
@@ -52,7 +141,11 @@
 			isa = PBXGroup;
 			children = (
 				899822282A3E485900547879 /* SwiftAssistantApp.swift */,
-				8998222A2A3E485900547879 /* ContentView.swift */,
+				891ED7A62A3FE9AE00449799 /* Model */,
+				891ED7A32A3FE7FC00449799 /* Views */,
+				891ED7A72A3FEA8400449799 /* ViewModel */,
+				891ED7AD2A40EB3100449799 /* Networking */,
+				891ED7A82A3FEAD300449799 /* Utilities */,
 				8998222C2A3E485A00547879 /* Assets.xcassets */,
 				8998222E2A3E485A00547879 /* Preview Content */,
 			);
@@ -83,6 +176,10 @@
 			dependencies = (
 			);
 			name = SwiftAssistant;
+			packageProductDependencies = (
+				891ED7982A3E6D0100449799 /* Down */,
+				891ED79B2A3EAC4A00449799 /* Highlightr */,
+			);
 			productName = SwiftAssistant;
 			productReference = 899822252A3E485900547879 /* SwiftAssistant.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +208,10 @@
 				Base,
 			);
 			mainGroup = 8998221C2A3E485900547879;
+			packageReferences = (
+				891ED7972A3E6D0100449799 /* XCRemoteSwiftPackageReference "Down" */,
+				891ED79A2A3EAC4A00449799 /* XCRemoteSwiftPackageReference "Highlightr" */,
+			);
 			productRefGroup = 899822262A3E485900547879 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +238,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8998222B2A3E485900547879 /* ContentView.swift in Sources */,
+				891ED7AA2A3FF9A200449799 /* SideBarSeparator.swift in Sources */,
+				891ED7AC2A40E37C00449799 /* Service.swift in Sources */,
+				8998223D2A3E4C0A00547879 /* ModalView.swift in Sources */,
+				8998222B2A3E485900547879 /* MainView.swift in Sources */,
+				899822372A3E498400547879 /* ContentEditorView_ViewModel.swift in Sources */,
+				899822432A3E4DCD00547879 /* CustomTextEditorView.swift in Sources */,
+				891ED7A02A3FE78400449799 /* CodeEditorView.swift in Sources */,
+				8998223F2A3E4CC900547879 /* TypingVIew.swift in Sources */,
 				899822292A3E485900547879 /* SwiftAssistantApp.swift in Sources */,
+				899822392A3E4A6100547879 /* PromptModels.swift in Sources */,
+				891ED7A22A3FE7B500449799 /* SideBarView.swift in Sources */,
+				899822412A3E4D5F00547879 /* Model.swift in Sources */,
+				891ED79E2A3FE6D800449799 /* AnalysisResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = portrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -249,6 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = portrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -339,6 +453,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		891ED7972A3E6D0100449799 /* XCRemoteSwiftPackageReference "Down" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnxnguyen/Down";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		891ED79A2A3EAC4A00449799 /* XCRemoteSwiftPackageReference "Highlightr" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raspu/Highlightr";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		891ED7982A3E6D0100449799 /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 891ED7972A3E6D0100449799 /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		891ED79B2A3EAC4A00449799 /* Highlightr */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 891ED79A2A3EAC4A00449799 /* XCRemoteSwiftPackageReference "Highlightr" */;
+			productName = Highlightr;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8998221D2A3E485900547879 /* Project object */;
 }

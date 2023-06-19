@@ -23,7 +23,7 @@ struct AnalysisResultView: View {
                 ZStack{
                     TypingView(fullText:viewModel.analysis, theme:selectedTheme.rawValue)
                         .frame(maxWidth:.infinity,maxHeight: .infinity)
-                        .border(Color.black, width: 1)
+                        .border(Color(UIColor.separator), width:2)
                         .padding(.leading)
                         .padding(.trailing)
                     if viewModel.showCheckmark {

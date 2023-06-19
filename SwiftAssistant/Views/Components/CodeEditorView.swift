@@ -18,7 +18,7 @@ struct CodeEditorView: View {
             
             TextEditor(text: $viewModel.writing) // assuming this replacement for your custom editor
                 .font(.custom("Courier New", size: 19))
-                .border(Color.black, width: 1)
+                .border(Color(UIColor.separator), width: 2)
                 .padding(.leading)
                 .padding(.trailing)
             

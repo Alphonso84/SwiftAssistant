@@ -16,63 +16,39 @@ class ContentEditorView_ViewModel: ObservableObject {
     @Published var showingModal = false
     @Published var questionType: QuestionType = .Code
     @Published var selectedResponseLength: ResponseLength = .Short
-    @Published var selectedResponseTone: ResponseTone = .Friendly
     @Published var syntaxStyle: HighlightrTheme = .githubGist
     @Published var requestError: RequestError?
     //let speechSynthesizer = AVSpeechSynthesizer()
-    let APIKey = "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"
+    let networkService = NetworkService()
     
     func analyzeWriting() {
         self.isLoading = true
-        let codePrompt = "Can you analyze the following Swift code? Give a \(selectedResponseLength.rawValue) length explaination of what the code does. Then give a refactored improved code example and explain how it improved the code from the previous version. Here is the Swift code: \(writing)"
-        let questionPrompt = "Answer the following iOS or Swift related propblem or question to the best of your ability. Give examples in code if it will be helpful for demonstrating the answer to the question or problem. Here is the question:\(writing)"
-        let prompt = questionType == .Code ? codePrompt : questionPrompt
-        print(prompt)
-        guard let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(APIKey)", forHTTPHeaderField: "Authorization")
-
-        let body: [String: Any] = [
-            "model": "gpt-4",
-            "messages": [
-                ["role": "user", "content": prompt]
-            ]
-        ]
-
-        let jsonData = try? JSONSerialization.data(withJSONObject: body)
-        request.httpBody = jsonData
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let prompt = createPrompt()
+        
+        networkService.sendRequest(with: prompt) { [weak self] result in
             DispatchQueue.main.async {
-                self.isLoading = false
-                if let error = error {
-                    print("Error: \(error)")
-                    self.requestError = .failedRequest
-                } else if let data = data {
-                    do {
-                        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                           let choices = json["choices"] as? [[String: Any]],
-                           let firstChoice = choices.first,
-                           let message = firstChoice["message"] as? [String: Any],
-                           let content = message["content"] as? String {
-                            self.analysis = content
-                            //self.speakText(content)
-                        }
-                    } catch {
-                        print("Error: \(error)")
-                        self.requestError = .failedRequest
+                self?.isLoading = false
+                switch result {
+                case .success(let root):
+                    if let firstChoice = root.choices.first {
+                        print("CONTENT BEING PRINTED: \(firstChoice.message.content)")
+                        self?.analysis = firstChoice.message.content
+                    } else {
+                        print("No choices available")
                     }
+                case .failure(let error):
+                    print("Error: \(error)")
+                    self?.requestError = .failedRequest
                 }
             }
         }
-        task.resume()
     }
-
+    
+    private func createPrompt() -> String {
+        let codePrompt = "Can you analyze the following Swift code? Give a \(selectedResponseLength.rawValue) length explanation of what the code does. Then give a refactored improved code example and explain how it improved the code from the previous version. Here is the Swift code: \(writing)"
+        let questionPrompt = "Answer the following iOS or Swift related problem or question to the best of your ability. Add a short example in Swift code. Here is the question: \(writing)"
+        return questionType == .Code ? codePrompt : questionPrompt
+    }
     
     func copyToClipboard() {
         UIPasteboard.general.string = analysis
@@ -89,10 +65,10 @@ class ContentEditorView_ViewModel: ObservableObject {
         }
     }
     
-//    func speakText(_ text: String) {
-//        let utterance = AVSpeechUtterance(string: text)
-//        speechSynthesizer.speak(utterance)
-//    }
+    //    func speakText(_ text: String) {
+    //        let utterance = AVSpeechUtterance(string: text)
+    //        speechSynthesizer.speak(utterance)
+    //    }
 }
 
 

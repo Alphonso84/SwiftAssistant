@@ -9,10 +9,10 @@ import SwiftUI
 
 struct SideBarSeparator: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Rectangle()
+            .fill(Color.gray)
+            .frame(height: 1)
+            .edgesIgnoringSafeArea(.horizontal)
     }
 }
 
-#Preview {
-    SideBarSeparator()
-}

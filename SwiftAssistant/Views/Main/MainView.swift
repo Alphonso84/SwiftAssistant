@@ -15,7 +15,7 @@ struct MainView: View {
     @State private var analysisLength = ResponseLength.Short
     @State private var questionType = QuestionType.Code
     @State private var selectedTab: Tab = .settings
-
+    
     var body: some View {
         NavigationView {
             SidebarView(selectedTheme: $selectedTheme, analysisLength: $analysisLength, questionType: $questionType, selectedTab: $selectedTab)
@@ -35,7 +35,7 @@ struct MainView: View {
             }
             .alert(item: $viewModel.requestError) { error in
                 Alert(title: Text("Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("Retry"), action: {
-                    viewModel.isLoading = false
+                    //viewModel.isLoading = false
                 }))
             }
         }
