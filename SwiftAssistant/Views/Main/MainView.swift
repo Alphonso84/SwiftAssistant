@@ -13,11 +13,11 @@ struct MainView: View {
     @ObservedObject var viewModel = ContentEditorView_ViewModel()
     @State private var selectedTheme = HighlightrTheme.androidstudio
     @State private var analysisLength = ResponseLength.Short
-    @State private var selectedTab: Tab = .settings
     
     var body: some View {
         NavigationView {
-            SidebarView(selectedTheme: $selectedTheme, analysisLength: $analysisLength, selectedTab: $selectedTab, viewModel: viewModel)
+            SidebarView(selectedTheme: $selectedTheme, analysisLength: $analysisLength, viewModel: viewModel)
+                .background(Color(uiColor: .secondarySystemBackground))
                 .onChange(of: viewModel.questionType) { newQuestionType in
                     viewModel.questionType = newQuestionType
                     print(viewModel.questionType)
@@ -40,6 +40,6 @@ struct MainView: View {
                 }))
             }
         }
-        .navigationViewStyle(DoubleColumnNavigationViewStyle())
+        .navigationViewStyle(DefaultNavigationViewStyle())
     }
 }

@@ -17,13 +17,16 @@ struct AnalysisResultView: View {
             Text(questionType == .Code ? "Refactored Swift Code" : "SwiftAssistant Answer")
                 .padding()
             if viewModel.isLoading {
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                    ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
             } else {
                 ZStack{
                     TypingView(fullText:viewModel.analysis, theme:selectedTheme.rawValue)
+                        .textSelection(.enabled)
                         .frame(maxWidth:.infinity,maxHeight: .infinity)
-                        .border(Color(UIColor.separator), width:2)
+                        .border(Color(UIColor.systemGray), width:1)
                         .padding(.leading)
                         .padding(.trailing)
                     if viewModel.showCheckmark {

@@ -10,7 +10,7 @@ import SwiftUI
 struct SideBarSeparator: View {
     var body: some View {
         Rectangle()
-            .fill(Color.gray)
+            .fill(Color(uiColor: .systemGray))
             .frame(height: 1)
             .edgesIgnoringSafeArea(.horizontal)
     }

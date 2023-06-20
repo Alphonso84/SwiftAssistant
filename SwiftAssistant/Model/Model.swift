@@ -19,3 +19,8 @@ struct Message: Decodable {
     let content: String
 }
 
+
+struct History: Hashable {
+    var history: [String: String]
+}
+

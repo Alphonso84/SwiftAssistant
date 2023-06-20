@@ -11,102 +11,71 @@ import SwiftUI
 struct SidebarView: View {
     @Binding var selectedTheme: HighlightrTheme
     @Binding var analysisLength: ResponseLength
-    @Binding var selectedTab: Tab
+    @State var selectedTab: Tab = .settings
     @ObservedObject var viewModel: ContentEditorView_ViewModel
 
-
     var body: some View {
-        List {
-            VStack {
-                HStack {
-                    Button(action: {
-                        selectedTab = .settings
-                    }) {
-                        VStack {
-                            Image(systemName: "gear")
-                            Text("Settings")
-                        }
-                    }
-                    
-                    Button(action: {
-                        selectedTab = .analytics
-                    }) {
-                        VStack {
-                            Image(systemName: "chart.bar")
-                            Text("Analytics")
-                        }
-                    }
-                    
-                    Button(action: {
-                        selectedTab = .about
-                    }) {
-                        VStack {
-                            Image(systemName: "info.circle")
-                            Text("About")
-                        }
-                    }
-                }
-                SideBarSeparator()
-                Spacer()
-                
-                Picker("Question Type", selection: $viewModel.questionType) {
-                    ForEach(QuestionType.allCases) { question in
-                        Text(question.rawValue).tag(question)
-                    }
-                }
-                .pickerStyle(MenuPickerStyle())
-                
-                Picker("Syntax Style", selection: $selectedTheme) {
-                    ForEach(HighlightrTheme.allCases) { theme in
-                        Text(theme.rawValue).tag(theme)
-                    }
-                }
-                .pickerStyle(MenuPickerStyle())
-                
-                Picker("Analysis Length", selection: $analysisLength) {
-                    ForEach(ResponseLength.allCases) { length in
-                        Text(length.rawValue).tag(length)
-                    }
-                }
-                .pickerStyle(MenuPickerStyle())
-                if viewModel.questionType == .Question {
-                    SideBarSeparator()
-                    Spacer()
+        VStack {
+            Picker(selection: $selectedTab, label: Text(""), content:{
+                Text("Settings").tag(Tab.settings)
+                Text("History").tag(Tab.history)
+                Text("About").tag(Tab.about)
+            })
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
+            ZStack {
+                switch selectedTab {
+                case .settings:
+                    // Show settings view
                     VStack {
-                        Button(action: {
-                            // selectedTab = .settings
-                        }) {
-                            HStack {
-                                Image(systemName: "books.vertical")
-                                Text("iOS Interview Question")
-                            }
-                        }
+                        SideBarSeparator()
                         
-                        Button(action: {
-                            // selectedTab = .analytics
-                        }) {
-                            HStack {
-                                Image(systemName: "books.vertical")
-                                Text("Swift Basics")
+                        Picker("Question Type", selection: $viewModel.questionType) {
+                            ForEach(QuestionType.allCases) { question in
+                                Text(question.rawValue).tag(question)
                             }
                         }
-                        
-                        Button(action: {
-                            // selectedTab = .about
-                        }) {
-                            HStack {
-                                Image(systemName: "books.vertical")
-                                Text("Swift Intermediate")
+                        .pickerStyle(SegmentedPickerStyle())
+                        HStack {
+                            Text("Syntax Style")
+                            Picker("Syntax Style", selection: $selectedTheme) {
+                                ForEach(HighlightrTheme.allCases) { theme in
+                                    Text(theme.rawValue).tag(theme)
+                                }
                             }
+                            .pickerStyle(MenuPickerStyle())
+                            Spacer()
                         }
+                        HStack {
+                            Text("Analysis Length")
+                            Picker("Analysis Length", selection: $analysisLength) {
+                                ForEach(ResponseLength.allCases) { length in
+                                    Text(length.rawValue).tag(length)
+                                }
+                            }
+                            .pickerStyle(MenuPickerStyle())
+                            Spacer()
+                        }
+                        Spacer()
                     }
-                    
+                case .history:
+                    // Show history view
+                    VStack {
+                        
+                        SideBarSeparator()
+                        List(viewModel.historyDictionary.history.keys.sorted(), id: \.self) { key in
+                                   Text(key)
+                               }
+                    }
+                case .about:
+                    // Show about view
+                    VStack {
+                        SideBarSeparator()
+                        Spacer()
+                    }
                 }
-                
             }
         }
-        .listStyle(SidebarListStyle())
-        .frame(minWidth: 200)
+        .padding()
     }
 }
-

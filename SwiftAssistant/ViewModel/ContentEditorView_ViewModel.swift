@@ -18,6 +18,7 @@ class ContentEditorView_ViewModel: ObservableObject {
     @Published var selectedResponseLength: ResponseLength = .Short
     @Published var syntaxStyle: HighlightrTheme = .githubGist
     @Published var requestError: RequestError?
+    @Published var historyDictionary: History = .init(history:["":""])
     //let speechSynthesizer = AVSpeechSynthesizer()
     let networkService = NetworkService()
     
@@ -33,6 +34,7 @@ class ContentEditorView_ViewModel: ObservableObject {
                     if let firstChoice = root.choices.first {
                         print("CONTENT BEING PRINTED: \(firstChoice.message.content)")
                         self?.analysis = firstChoice.message.content
+                        self?.historyDictionary.history[self?.writing ?? "default"] = self?.analysis
                     } else {
                         print("No choices available")
                     }

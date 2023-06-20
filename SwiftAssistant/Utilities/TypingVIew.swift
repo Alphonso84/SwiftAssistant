@@ -18,6 +18,7 @@ struct TypingView: View {
                 HStack {
                     Text(textToDisplay)
                         .id(UUID())
+                        .textSelection(.enabled)
                         
                     Spacer()
                 }
