@@ -13,7 +13,8 @@ struct SidebarView: View {
     @Binding var analysisLength: ResponseLength
     @State var selectedTab: Tab = .settings
     @ObservedObject var viewModel: ContentEditorView_ViewModel
-
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack {
             Picker(selection: $selectedTab, label: Text(""), content:{
@@ -38,22 +39,32 @@ struct SidebarView: View {
                         .pickerStyle(SegmentedPickerStyle())
                         HStack {
                             Text("Syntax Style")
+                                .accentColor(Color(uiColor: .secondaryLabel))
                             Picker("Syntax Style", selection: $selectedTheme) {
                                 ForEach(HighlightrTheme.allCases) { theme in
-                                    Text(theme.rawValue).tag(theme)
+                                    Text(theme.rawValue)
+                                        .foregroundColor(.primary)
+                                        .tag(theme)
                                 }
                             }
                             .pickerStyle(MenuPickerStyle())
+                            .accentColor(Color(uiColor: .label))
+                            .background(Color(uiColor: .tertiarySystemBackground))
                             Spacer()
                         }
                         HStack {
                             Text("Analysis Length")
+                                .accentColor(Color(uiColor: .secondaryLabel))
                             Picker("Analysis Length", selection: $analysisLength) {
                                 ForEach(ResponseLength.allCases) { length in
-                                    Text(length.rawValue).tag(length)
+                                    Text(length.rawValue)
+                                        .foregroundColor(.primary)
+                                        .tag(length)
                                 }
                             }
                             .pickerStyle(MenuPickerStyle())
+                            .accentColor(Color(uiColor: .label))
+                            .background(Color(uiColor: .tertiarySystemBackground))
                             Spacer()
                         }
                         Spacer()

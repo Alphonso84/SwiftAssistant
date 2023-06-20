@@ -22,6 +22,30 @@ class ContentEditorView_ViewModel: ObservableObject {
     //let speechSynthesizer = AVSpeechSynthesizer()
     let networkService = NetworkService()
     
+    init() {
+        
+        // Load history dictionary from UserDefaults
+        if let data = UserDefaults.standard.data(forKey: "history") {
+            do {
+                // Convert data to dictionary
+                let historyObject = try JSONDecoder().decode(History.self, from: data)
+                historyDictionary = historyObject
+            } catch {
+                print("Failed to load history: \(error)")
+            }
+        }
+    }
+    
+    func saveHistoryToUserDefaults(history:[String:String]) {
+        do {
+            // Convert dictionary to data
+            let data = try JSONEncoder().encode(history)
+            // Save data to UserDefaults
+            UserDefaults.standard.set(data, forKey: "history")
+        } catch {
+            print("Failed to save history: \(error)")
+        }
+    }
     func analyzeWriting() {
         self.isLoading = true
         let prompt = createPrompt()
@@ -34,7 +58,18 @@ class ContentEditorView_ViewModel: ObservableObject {
                     if let firstChoice = root.choices.first {
                         print("CONTENT BEING PRINTED: \(firstChoice.message.content)")
                         self?.analysis = firstChoice.message.content
-                        self?.historyDictionary.history[self?.writing ?? "default"] = self?.analysis
+                        
+                        // Update history dictionary with new analysis
+                        self?.historyDictionary.history[self?.writing ?? "default"] = self?.analysis 
+
+                        do {
+                            // Convert dictionary to data
+                            let data = try JSONEncoder().encode(self?.historyDictionary.history)
+                            // Save data to UserDefaults
+                            UserDefaults.standard.set(data, forKey: "history")
+                        } catch {
+                            print("Failed to save history: \(error)")
+                        }
                     } else {
                         print("No choices available")
                     }
@@ -45,6 +80,7 @@ class ContentEditorView_ViewModel: ObservableObject {
             }
         }
     }
+
     
     private func createPrompt() -> String {
         let codePrompt = "Can you analyze the following Swift code? Give a \(selectedResponseLength.rawValue) length explanation of what the code does. Then give a refactored improved code example and explain how it improved the code from the previous version. Here is the Swift code: \(writing)"

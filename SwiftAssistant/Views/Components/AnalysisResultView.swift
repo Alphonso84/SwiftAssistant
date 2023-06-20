@@ -48,8 +48,11 @@ struct AnalysisResultView: View {
             }
             Button(action: viewModel.copyToClipboard) {
                 Text("Copy Refactored Code to Clipboard")
+                    .foregroundColor(.primary) // Adjust color for light and dark mode
+                    .padding()
+                    .background(Color(UIColor.secondarySystemBackground)) // secondary background color
+                    .cornerRadius(25) // corner radius of 25
             }
-            .padding()
         }
     }
 }

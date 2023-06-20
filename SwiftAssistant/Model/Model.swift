@@ -20,7 +20,7 @@ struct Message: Decodable {
 }
 
 
-struct History: Hashable {
+struct History: Codable {
     var history: [String: String]
 }
 
